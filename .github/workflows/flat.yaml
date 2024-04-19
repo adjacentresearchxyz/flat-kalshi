@@ -23,10 +23,10 @@ jobs:
       # get current date for URL
       - name: Get current date
         id: current_date
-        run: echo "{name}={date}" >> $('%Y-%m-%d')
+        run: echo "current_date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
       # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
       - name: Fetch data 
         uses: githubocto/flat@v3
         with:
-          http_url: https://kalshi-public-docs.s3.amazonaws.com/reporting/market_data_${{ steps.current_date.outputs.date }}.json
-          downloaded_filename: kalshi_volume_${{ steps.current_date.outputs.date }}.json
+          http_url: https://kalshi-public-docs.s3.amazonaws.com/reporting/market_data_$GITHUB_OUTPUT.json
+          downloaded_filename: kalshi_volume_$GITHUB_OUTPUT.json
