@@ -6,7 +6,7 @@ on:
       - .github/workflows/flat.yml # Only run a new workflow every time this file (flat.yaml) file changes
   workflow_dispatch: # Required even though this is currently empty
   schedule:
-    - cron: '0 0 * * *' # Run this workflow every 5 minutes
+    - cron: '0 0 * * *'
 
 jobs:
   scheduled:
@@ -23,7 +23,7 @@ jobs:
       # get current date for URL
       - name: Get current date
         id: current_date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "{name}={date}" >> $('%Y-%m-%d')
       # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
       - name: Fetch data 
         uses: githubocto/flat@v3
