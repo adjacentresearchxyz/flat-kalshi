@@ -25,7 +25,7 @@ jobs:
         id: current_date
         run: echo "current_date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
       - name: Print Message
-        run: echo "https://kalshi-public-docs.s3.amazonaws.com/reporting/market_data_${{GITHUB_OUTPUT}}.json"
+        run: echo "https://kalshi-public-docs.s3.amazonaws.com/reporting/market_data_$GITHUB_OUTPUT.json"
       # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
       - name: Fetch data 
         uses: githubocto/flat@v3
