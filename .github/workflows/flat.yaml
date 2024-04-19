@@ -23,7 +23,7 @@ jobs:
       # get current date for URL
       - name: Get current date
         id: current_date
-        run: echo "current_date=$(date +'%Y-%m-%d')" > $DATE
+        run: echo "current_date=$(date +'%Y-%m-%d')" >> $DATE
       - name: Print Message
         run: echo "https://kalshi-public-docs.s3.amazonaws.com/reporting/market_data_$DATE.json"
       # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
